@@ -10,7 +10,7 @@ import org.junit.Test;
 public class FileExtractorTest {
 
 	@Test
-	public void test() throws IOException {
+	public void testSimpleExample() throws IOException {
 		Collection<String> result = new FileExtractor(new FileInputStream(
 				"target/test-classes/example.diff")).process();
 		Assert.assertTrue(result.contains("affected-core/pom.xml"));
