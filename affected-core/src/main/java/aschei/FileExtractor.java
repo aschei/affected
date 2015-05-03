@@ -29,22 +29,20 @@ public class FileExtractor {
 	}
 
 	public static void main(String[] args) throws IOException {
-		InputStream in = System.in;
-		if (args.length > 0) {
-			in = new FileInputStream(new File(args[0]));
+		try (InputStream in = args.length > 0? new FileInputStream(new File(args[0])) : System.in) {
+			for (String file : new FileExtractor(in).process()) {
+				System.out.println(file);
+			}
 		}
-		new FileExtractor(in).run();
 	}
 
-	private void run() throws IOException {
+	public Collection<String> process() throws IOException {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 		String line;
 		while ((line = reader.readLine()) != null) {
 			processLine(line);
 		}
-		for (String file : result) {
-			System.out.println(file);
-		}
+		return result;
 	}
 
 	private void processLine(String line) {
