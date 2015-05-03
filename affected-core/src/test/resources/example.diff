@@ -1,0 +1,43 @@
+diff --git a/affected-core/pom.xml b/affected-core/pom.xml
+index 7137363..6471806 100644
+--- a/affected-core/pom.xml
++++ b/affected-core/pom.xml
+@@ -16,6 +16,11 @@
+ 	</properties>
+ 	<dependencies>
+ 		<dependency>
++			<groupId>com.googlecode.java-diff-utils</groupId>
++			<artifactId>diffutils</artifactId>
++			<version>1.2.1</version>
++		</dependency>
++		<dependency>
+ 			<groupId>junit</groupId>
+ 			<artifactId>junit</artifactId>
+ 			<version>3.8.1</version>
+diff --git a/affected-core/src/main/java/aschei/App.java b/affected-core/src/main/java/aschei/App.java
+index cf729c2..5cc8c1a 100644
+--- a/affected-core/src/main/java/aschei/App.java
++++ b/affected-core/src/main/java/aschei/App.java
+@@ -12,6 +12,11 @@ import java.util.List;
+  */
+ public class App {
+ 	public static void main(String[] args) {
++		System.out.println("Processing "+ args[0]);
++		for (String line: fileToLines(args[0])) {
++			System.out.println(line);
++		}
++		new Second();
+ 	}
+ 
+ 	// Helper method for get the file content
+diff --git a/affected-core/src/main/java/aschei/Second.java b/affected-core/src/main/java/aschei/Second.java
+new file mode 100644
+index 0000000..ab37e3e
+--- /dev/null
++++ b/affected-core/src/main/java/aschei/Second.java
+@@ -0,0 +1,5 @@
++package aschei;
++
++public class Second {
++
++}
