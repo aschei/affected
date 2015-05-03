@@ -15,5 +15,6 @@
 
   <modules>
     <module>affected-maven-plugin</module>
+    <module>affected-core</module>
   </modules>
 </project>
