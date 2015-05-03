@@ -14,8 +14,6 @@ import java.util.regex.Pattern;
 /**
  * Extracts affected files from unified diff content.
  * 
- * The
- *
  */
 public class FileExtractor {
 
