@@ -20,7 +20,7 @@ import java.util.regex.Pattern;
 public class FileExtractor {
 
 	private InputStream in;
-	private Collection<String> result = new HashSet<String>();
+	private Collection<String> result = new HashSet<>();
 	private Pattern filenamePattern = Pattern
 			.compile("(\\+\\+\\+|---) (a|b)/(.*)");
 
