@@ -16,12 +16,12 @@ package aschei;
  * limitations under the License.
  */
 
-import org.apache.maven.plugin.AbstractMojo;
-import org.apache.maven.plugin.MojoExecutionException;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+
+import org.apache.maven.plugin.AbstractMojo;
+import org.apache.maven.plugin.MojoExecutionException;
 
 /**
  * Goal which touches a timestamp file.
@@ -31,38 +31,40 @@ import java.io.IOException;
  * @phase process-sources
  */
 public class MyMojo extends AbstractMojo {
-	/**
-	 * Location of the file.
-	 * 
-	 * @parameter expression="${project.build.directory}"
-	 * @required
-	 */
-	private File outputDirectory;
 
-	public void execute() throws MojoExecutionException {
-		File f = outputDirectory;
+    /**
+     * Location of the file.
+     * 
+     * @parameter expression="${project.build.directory}"
+     * @required
+     */
+    private File outputDirectory;
 
-		if (!f.exists()) {
-			f.mkdirs();
-		}
+    @Override
+    public void execute() throws MojoExecutionException {
+        File f = outputDirectory;
 
-		File touch = new File(f, "touch.txt");
+        if (!f.exists()) {
+            f.mkdirs();
+        }
 
-		FileWriter w = null;
-		try {
-			w = new FileWriter(touch);
+        File touch = new File(f, "touch.txt");
 
-			w.write("touch.txt");
-		} catch (IOException e) {
-			throw new MojoExecutionException("Error creating file " + touch, e);
-		} finally {
-			if (w != null) {
-				try {
-					w.close();
-				} catch (IOException e) {
-					// ignore
-				}
-			}
-		}
-	}
+        FileWriter w = null;
+        try {
+            w = new FileWriter(touch);
+
+            w.write("touch.txt");
+        } catch (IOException e) {
+            throw new MojoExecutionException("Error creating file " + touch, e);
+        } finally {
+            if (w != null) {
+                try {
+                    w.close();
+                } catch (IOException e) {
+                    // ignore
+                }
+            }
+        }
+    }
 }
